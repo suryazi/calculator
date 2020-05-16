@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Push image to OCIR") {
             steps {
-                sh "sudo docker login -u 'suryazi' -p '_UQ24zDUY{IG-I-pf[{<' iad.ocir.io"
+                sh "sudo docker login -u 'suryazi/suryazi' -p '_UQ24zDUY{IG-I-pf[{<' iad.ocir.io"
                 sh "sudo docker tag calculator:1 iad.ocir.io/ocid1.tenancy.oc1..aaaaaaaa3rnceftry4u6fpki4bgz7qlt363vi5olq5ji4ip3jxbxmugge6pa/calculator:custom"
                 sh "sudo docker push iad.ocir.io/ocid1.tenancy.oc1..aaaaaaaa3rnceftry4u6fpki4bgz7qlt363vi5olq5ji4ip3jxbxmugge6pa/calculator:custom"
             }
