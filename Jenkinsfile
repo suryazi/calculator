@@ -45,13 +45,13 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "docker-compose up -d"
+                sh "/usr/local/bin/docker-compose up -d"
             }
         }
         stage("Acceptance test") {
             steps {
-                sh "docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml build test"
-                sh "docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml -p acceptance up -d"
+                sh "/usr/local/bin/docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml build test"
+                sh "/usr/local/bin/docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml -p acceptance up -d"
                 sh "test ${docker wait acceptance_test_1} -eq 0"
             }
         }
