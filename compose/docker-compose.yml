@@ -1,0 +1,7 @@
+verson: "3"
+services:
+  calculator:
+    image: calculator:latest
+    ports: -8080
+  redis:
+    image: redis:latest
