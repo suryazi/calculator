@@ -45,20 +45,20 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "sudo docker-compose up -d"
+                sh "docker-compose up -d"
             }
         }
         stage("Acceptance test") {
             steps {
-                sleep 60
-                sh "sudo chmod u+x acceptance_test.sh"
-                sh "sudo ./acceptance_test.sh"
+                sh "docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml build test"
+                sh "docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml -p acceptance up -d"
+                sh "test $(docker wait acceptance_test_1) -eq 0"
             }
         }
     }
     post {
         always {
-            sh "sudo docker-compose down"
+            sh "docker-compose -f docker-compose.yml -f acceptance/docker-compose-acceptance.yml -p acceptance down"
         }
     }
 }

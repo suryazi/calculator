@@ -1,0 +1,9 @@
+version: "3"
+services:
+  calculator:
+    build: .
+    image: suryazi/calculator
+    ports:
+      - 8080
+    redis:
+      image: redis:latest
