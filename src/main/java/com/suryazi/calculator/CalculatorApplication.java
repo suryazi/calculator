@@ -46,7 +46,7 @@ public class CalculatorApplication {
 		return new StringRedisTemplate(connectionFactory);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		ApplicationContext ctx = SpringApplication.run(CalculatorApplication.class, args);
 		StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
 		Receiver receiver = ctx.getBean(Receiver.class);
