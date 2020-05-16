@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "docker run -d --rm -p 8765:8080 --name calculator suryazi/calculator"
+                sh "sudo docker run -d --rm -p 8765:8080 --name calculator suryazi/calculator"
             }
         }
         stage("Acceptance test") {
