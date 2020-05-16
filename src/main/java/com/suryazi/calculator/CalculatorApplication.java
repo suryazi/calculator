@@ -18,7 +18,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 @SpringBootApplication
 public class CalculatorApplication {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MessagingRedisApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorApplication.class);
 
 	@Bean
 	RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
