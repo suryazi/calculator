@@ -43,5 +43,21 @@ pipeline {
                 sh "sudo docker build -t suryazi/calculator ."
             }
         }
+        stage("Deploy to staging") {
+            steps {
+                sh "docker run -d --rm -p 8765:8080 --name calculator suryazi/calculator"
+            }
+        }
+        stage("Acceptance test") {
+            steps {
+                sleep 60
+                sh "./accpetance_test.sh"
+            }
+        }
+        post {
+            always {
+                sh "docker stop calculator"
+            }
+        }
     }
 }
