@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "sudo docker run -d --rm -p 8765:8080 --name calculator suryazi/calculator"
+                sh "sudo docker-compose up -d"
             }
         }
         stage("Acceptance test") {
@@ -58,7 +58,7 @@ pipeline {
     }
     post {
         always {
-            sh "sudo docker stop calculator"
+            sh "sudo docker-compose down"
         }
     }
 }
