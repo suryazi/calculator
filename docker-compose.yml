@@ -5,5 +5,5 @@ services:
     image: suryazi/calculator
     ports:
       - 8080
-    redis:
-      image: redis:latest
+  redis:
+    image: redis:latest
