@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "chmod +x /usr/local/bin/docker-compose"
+                sh "sudo chmod +x /usr/local/bin/docker-compose"
                 sh "/usr/local/bin/docker-compose up -d"
             }
         }

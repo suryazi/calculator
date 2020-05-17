@@ -20,6 +20,11 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+    testImplementation("info.cukes:cucumber-java:$cucumberVersion")
+    testImplementation("info.cukes:cucumber-junit:$cucumberVersion")
+    testImplementation("info.cukes:cucumber-spring:$cucumberVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
 test {
